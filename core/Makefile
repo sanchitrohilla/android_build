@@ -648,8 +648,6 @@ INTERNAL_MKBOOTIMG_VERSION_ARGS := \
     --os_version $(PLATFORM_VERSION) \
     --os_patch_level $(PLATFORM_SECURITY_PATCH)
 
-INSTALLED_DTIMAGE_TARGET := $(PRODUCT_OUT)/dt.img
-
 ifeq ($(strip $(BOARD_KERNEL_SEPARATED_DT)),true)
   INTERNAL_BOOTIMAGE_ARGS += --dt $(INSTALLED_DTIMAGE_TARGET)
   BOOTIMAGE_EXTRA_DEPS    := $(INSTALLED_DTIMAGE_TARGET)
@@ -1346,7 +1344,7 @@ $(recovery_uncompressed_ramdisk): $(MKBOOTFS) \
 		$(INSTALLED_2NDBOOTLOADER_TARGET) \
 		$(recovery_build_props) $(recovery_resource_deps) $(recovery_root_deps) \
 		$(recovery_fstab) \
-		$(RECOVERY_INSTALL_OTA_KEYS) \
+		$(RECOVERY_INSTALL_OTA_KEYS) $(RECOVERYIMAGE_EXTRA_DEPS) \
 		$(INSTALLED_VENDOR_DEFAULT_PROP_TARGET) \
 		$(BOARD_RECOVERY_KERNEL_MODULES) \
 		$(DEPMOD)
