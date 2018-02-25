@@ -962,4 +962,6 @@ endif
 # Rules for QCOM targets
 include $(TOPDIR)vendor/omni/build/core/qcom_target.mk
 
+include $(BUILD_SYSTEM)/qcom_target.mk
+
 include $(BUILD_SYSTEM)/dumpvar.mk
